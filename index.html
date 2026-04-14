@@ -4,10 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JB Hotel & Suites | Luxury in Ogun State</title>
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+        console.error("Global Error:", msg, "at", url, ":", line);
+        var root = document.getElementById('root');
+        if (root && (root.innerHTML === '' || root.innerHTML === 'Loading...')) {
+          root.innerHTML = '<div style="color: #D4AF37; background: #000; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: serif; text-align: center; padding: 20px;">' +
+            '<h1 style="font-size: 2rem; margin-bottom: 1rem;">Experience Interrupted</h1>' +
+            '<p style="color: #ccc; max-width: 400px; margin-bottom: 2rem;">We encountered a technical issue while preparing your luxury stay. Please try refreshing the page.</p>' +
+            '<div style="font-family: monospace; font-size: 0.8rem; color: #666; border: 1px solid #333; padding: 10px; border-radius: 8px; max-width: 100%; overflow: auto;">' + msg + '</div>' +
+            '</div>';
+        }
+        return false;
+      };
+    </script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.tsx"></script>
+    <div id="root" style="background: #000; color: #D4AF37; height: 100vh; display: flex; align-items: center; justify-content: center; font-family: serif;">
+      Loading JB Hotel & Suites...
+    </div>
+    <script 
+      type="module" 
+      src="/src/main.tsx"
+      onerror="document.getElementById('root').innerHTML = '<div style=\'text-align:center;padding:20px;\'><h1 style=\'font-size:1.5rem;\'>Connection Issue</h1><p style=\'color:#ccc;\'>We couldn\'t load the application. Please ensure you are deploying the <strong>dist</strong> folder after running <strong>npm run build</strong>.</p></div>'"
+    ></script>
   </body>
 </html>
 
